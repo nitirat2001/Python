@@ -146,9 +146,9 @@ def insertnomal(x,y):
 
 def choose_hours3():
     global price3
-    hours3 = int(input('กรอกจำนวนเวลาที่ต้องการเล่น หน่วยซม. : '))
+    hours3 = float(input('กรอกจำนวนเวลาที่ต้องการเล่น หน่วยซม. : '))
     sum03 = (hours3*15)-((hours3*15)*(10/100))
-    price3 = int(sum03)
+    price3 = float(sum03)
     print('ราคาที่ต้องจ่าย',price3 , 'บาท')
     string_length=10
     """Returns a random string of length string_length."""
@@ -160,9 +160,9 @@ def choose_hours3():
         
 def choose_hours():
     global price
-    hours = int(input('กรอกจำนวนเวลาที่ต้องการเล่น หน่วยซม. : '))
+    hours = float(input('กรอกจำนวนเวลาที่ต้องการเล่น หน่วยซม. : '))
     sum01 =((hours*15)-(hours*15)*10/100)+100
-    price = int(sum01)
+    price = float(sum01)
     print('ราคาที่ต้องจ่าย',price , 'บาท')
     string_length=10
     """Returns a random string of length string_length."""
@@ -174,9 +174,9 @@ def choose_hours():
     
 def choose_hours1():
     global price1
-    hours1 = int(input('กรอกจำนวนเวลาที่ต้องการเล่น หน่วย ซม. : '))
+    hours1 = float(input('กรอกจำนวนเวลาที่ต้องการเล่น หน่วย ซม. : '))
     sum02 = hours1*15
-    price1 = int(sum02)
+    price1 = float(sum02)
     print('ราคาที่ต้องจ่าย',price1, 'บาท')
     string_length=10
     """Returns a random string of length string_length."""
@@ -193,7 +193,7 @@ def earnmoney():
     c.execute('SELECT * From nomalusers')
     hee = c.fetchall()
     for x in hee:
-        sum_l = int(x[8])+sum_l
+        sum_l = float(x[8])+sum_l
     print('-'*95+'ยอดรวม','   ',sum_l,'บาท') 
     
 def clear():
