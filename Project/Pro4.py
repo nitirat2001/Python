@@ -145,10 +145,10 @@ def choose_hours3():
     earnmoney(price3)
     string_length=10
     """Returns a random string of length string_length."""
-    random = str(uuid.uuid4()) # Convert UUID format to a Python string.
-    random = random.upper() # Make all characters uppercase.
-    random = random.replace("-","") # Remove the UUID '-'.
-    print ('คีย์ของคุณคือ ',random[0:string_length]) # Return the random string.
+    random = str(uuid.uuid4()) 
+    random = random.upper() 
+    random = random.replace("-","") 
+    print ('คีย์ของคุณคือ ',random[0:string_length]) 
     insertloginvip(hours3,random[0:string_length])              
         
 def choose_hours():
@@ -160,10 +160,10 @@ def choose_hours():
     earnmoney(price)
     string_length=10
     """Returns a random string of length string_length."""
-    random = str(uuid.uuid4()) # Convert UUID format to a Python string.
-    random = random.upper() # Make all characters uppercase.
-    random = random.replace("-","") # Remove the UUID '-'.
-    print ('คีย์ของคุณคือ ',random[0:string_length]) # Return the random string.
+    random = str(uuid.uuid4()) 
+    random = random.upper() 
+    random = random.replace("-","") 
+    print ('คีย์ของคุณคือ ',random[0:string_length]) 
     insertvip(hours,random[0:string_length])
     
 def choose_hours1():
@@ -174,10 +174,9 @@ def choose_hours1():
     print('ราคาที่ต้องจ่าย',price1, 'บาท')
     string_length=10
     """Returns a random string of length string_length."""
-    random = str(uuid.uuid4()) # Convert UUID format to a Python string.
-    random = random.upper() # Make all characters uppercase.
-    random = random.replace("-","") # Remove the UUID '-'.
-    print ('คีย์ของคุณคือ ',random[0:string_length]) # Return the random string.
+    random = str(uuid.uuid4()) 
+    random = random.replace("-","") 
+    print ('คีย์ของคุณคือ ',random[0:string_length])
     insertnomal(hours1,random[0:string_length])
     
 def earnmoney(x):
