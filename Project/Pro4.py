@@ -34,6 +34,7 @@ def menu():
     if pick == '1' :
         while True:
             global Timer,username,password,phonenumber
+            print('กรุณากรอกตัวอักษรหรือตัวเลข 6-10 ตัว')
             username = input('กรุณากรอก Username : ')
             password = input('กรุณากรอก Password : ')
             phonenumber = input('กรุณากรอก Phonenumber : ')
@@ -175,8 +176,9 @@ def choose_hours1():
     string_length=10
     """Returns a random string of length string_length."""
     random = str(uuid.uuid4()) 
+    random = random.upper() 
     random = random.replace("-","") 
-    print ('คีย์ของคุณคือ ',random[0:string_length])
+    print ('คีย์ของคุณคือ ',random[0:string_length]) 
     insertnomal(hours1,random[0:string_length])
     
 def earnmoney(x):
@@ -192,7 +194,7 @@ def clear():
         
 def show_promotion():
     print("*****โปรโมชั่นร้านตอนนี้*****")
-    print(" 1 ชั่วโมง 15 บาท\n 2 ชั่วโมง 30 บาท\n 3 ชั่วโมง 45 บาท\n 4 ชั่วโมง 45 บาท\n 5 ชั่วโมง 70 บาท ")
+    print(" 1 ชั่วโมง 15 บาท\n 2 ชั่วโมง 30 บาท\n 3 ชั่วโมง 45 บาท\n 4 ชั่วโมง 60 บาท\n 5 ชั่วโมง 75 บาท ")
     print('สมัคร VIP เพียงเดือนละ 100')
     print("หากเป็นลูกค้า VIP มีส่วนลด 10%")
 
@@ -221,13 +223,16 @@ while True:
         clear()
         menu()
     elif choice == '2':
+        clear()
         login_uservip()
     elif choice == '3':
+        clear()
         show_promotion()
     elif choice == '4':
         clear()
         show_user()
     elif choice == '5':
+        clear()
         delete()
     elif choice == 'x':
         clear()
