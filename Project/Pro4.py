@@ -20,7 +20,6 @@ import uuid
 # conn.commit()
 # conn.close()
 
-total_money = 0
 def menu_interface():
     global choice
     print('='*50)
@@ -34,10 +33,16 @@ def menu():
     if pick == '1' :
         while True:
             global Timer,username,password,phonenumber
-            print('กรุณากรอกตัวอักษรหรือตัวเลข 6-10 ตัว')
+            clear()
+            print('โปรดกรอก USER AND PASS 6-10 ตัว')
+            print('กรอกเฉพาะตัวเลขหรือคุณกรอกเกิน 10 ตัว กรุณากรอกใหม่')
             username = input('กรุณากรอก Username : ')
             password = input('กรุณากรอก Password : ')
-            phonenumber = input('กรุณากรอก Phonenumber : ')
+            try:
+                phonenumber = int(input('phonenumber :'))
+            except:
+                print('กรอกแต่เลข')
+                continue
             t = datetime.datetime.now()
             Timer = str(t)
             if len(username)< 6 :
@@ -55,11 +60,11 @@ def menu():
             elif len(password)>10:
                 clear()
                 print('โปรดใส่รหัส 6-10 ตัวอักษร')
-            
+                  
             else:
                 choose_hours()
                 break
-       
+ 
     elif pick == '2' :
         global Timer1,username1,password1,phonenumber1
         t = datetime.datetime.now()
@@ -76,7 +81,6 @@ def menu():
 def login_uservip():
         username = input("กรุณาใส่ชื่อไอดีของท่าน :")
         password = input("กรุณาใส่รหัสของท่าน :")
-        
         with It.connect(r"D:\Nitirat_Python\Project\Project4.db") as db:
             cursor = db.cursor()
         find_user = ("SELECT * FROM nomalusers WHERE username = ? AND password = ?")
@@ -143,7 +147,6 @@ def choose_hours3():
     sum03 = (hours3*15)-((hours3*15)*(10/100))
     price3 = int(sum03)
     print('ราคาที่ต้องจ่าย',price3 , 'บาท')
-    earnmoney(price3)
     string_length=10
     """Returns a random string of length string_length."""
     random = str(uuid.uuid4()) 
@@ -158,7 +161,6 @@ def choose_hours():
     sum01 =((hours*15)-(hours*15)*10/100)+100
     price = int(sum01)
     print('ราคาที่ต้องจ่าย',price , 'บาท')
-    earnmoney(price)
     string_length=10
     """Returns a random string of length string_length."""
     random = str(uuid.uuid4()) 
@@ -181,11 +183,16 @@ def choose_hours1():
     print ('คีย์ของคุณคือ ',random[0:string_length]) 
     insertnomal(hours1,random[0:string_length])
     
-def earnmoney(x):
-    global total_money
-    total_money = total_money + x
-    return(total_money)
-
+def earnmoney():
+    sum_l = 0
+    conn = It.connect(r"D:\Nitirat_Python\Project\Project4.db")
+    c = conn.cursor()
+    c.execute('SELECT * From nomalusers')
+    hee = c.fetchall()
+    for x in hee:
+        sum_l = int(x[8])+sum_l
+    print('-'*95+'ยอดรวม','   ',sum_l,'บาท') 
+    
 def clear():
     if name == 'nt':
         _ = system('cls')
@@ -206,10 +213,11 @@ def show_user():
         show1="SELECT * FROM nomalusers "
         for row in con.execute(show1):
             print('{0:<3}{1:<10}{2:<10}{3:<13}{4:<30}{5:<15}{6:<10}{7:<15}{8:<5}'.format(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7],row[8]))
-    print('-'*95+ "เงินรวม =  ",earnmoney(price1))
+    earnmoney()
     
 def delete():
     d = input('ลำดับที่ต้องการลบ : ')
+    d = (d,)
     conn = It.connect(r"D:\Nitirat_Python\Project\Project4.db")
     c = conn.cursor()
     c.execute('''DELETE FROM nomalusers WHERE id = ?''',d)
