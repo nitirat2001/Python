@@ -35,7 +35,7 @@ def menu():
             global Timer,username,password,phonenumber
             clear()
             print('โปรดกรอก USER AND PASS 6-10 ตัว')
-            print('กรอกเฉพาะตัวเลขหรือคุณกรอกเกิน 10 ตัว กรุณากรอกใหม่')
+            print('กรอกเฉพาะตัวเลขหรือ กรุณากรอกใหม่')
             username = input('กรุณากรอก Username : ')
             password = input('กรุณากรอก Password : ')
             try:
