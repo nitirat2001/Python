@@ -79,6 +79,9 @@ def menu():
         menu()
 
 def login_uservip():
+        global Timer2,username,password,phonenumber
+        t = datetime.datetime.now()
+        Timer2 = str(t)
         username = input("กรุณาใส่ชื่อไอดีของท่าน :")
         password = input("กรุณาใส่รหัสของท่าน :")
         with It.connect(r"D:\Nitirat_Python\Project\Project4.db") as db:
@@ -116,7 +119,7 @@ def insertloginvip(x,y):
             conn = It.connect (r"D:\Nitirat_Python\Project\Project4.db")
             c = conn.cursor()
             sql = ''' INSERT INTO nomalusers(VIP,username,password,timer,Phonenumber,Yourtime,key,price) VALUES (?,?,?,?,?,?,?,?) '''
-            data = ('VIP',username,password,Timer,phonenumber,x,y,price3)
+            data = ('VIP',username,password,Timer2,phonenumber,x,y,price3)
             c.execute(sql,data)
             conn.commit()
             c.close()
